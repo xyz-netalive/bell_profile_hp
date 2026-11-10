@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ベル様の物語（試作）</title>
+  <meta name="description" content="ベル様公式サイトのトップページ試作です。文章はすべて仮のものです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand__en">BELL</span>
+      <span class="brand__ja">ベル様の物語</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="global-nav">
+      <span class="menu-toggle__bar"></span>
+      <span class="visually-hidden">メニューを開く</span>
+    </button>
+    <nav id="global-nav" class="global-nav" aria-label="サイト内メニュー">
+      <ul>
+        <li><a href="#chapters"><span class="nav-main">伝承</span><span class="nav-sub">プロフィール</span></a></li>
+        <li><a href="#chapters"><span class="nav-main">宣言</span><span class="nav-sub">ベル様の考え</span></a></li>
+        <li><a href="#news"><span class="nav-main">叡智の書</span><span class="nav-sub">コラム</span></a></li>
+        <li><a href="#chapters"><span class="nav-main">年代記</span><span class="nav-sub">活動の歩み</span></a></li>
+        <li><a href="#alliance"><span class="nav-main">盟約の門</span><span class="nav-sub">企業の方へ</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== ヒーロー ===== -->
+    <section id="top" class="hero">
+      <div class="hero__portrait reveal">
+        <div class="portrait-frame">
+          <div class="portrait-frame__inner">
+            <!-- ベル様のイラストに差し替える（alt も設定する） -->
+            <p class="portrait-placeholder">ベル様の<br>イラスト<br><small>（差し替え予定）</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__text reveal">
+        <p class="overline"><span lang="en">THE CHRONICLE OF BELL</span></p>
+        <h1 class="hero__title">可能性は、<br>まだ地図にない。</h1>
+        <p class="hero__note">※ キャッチコピーは仮です</p>
+        <div class="ornament-divider" aria-hidden="true">
+          <svg viewBox="0 0 240 20"><path d="M0 10 H95 M145 10 H240" /><path d="M120 2 L128 10 L120 18 L112 10 Z" class="fill" /><circle cx="102" cy="10" r="2.5" class="fill"/><circle cx="138" cy="10" r="2.5" class="fill"/></svg>
+        </div>
+        <p class="hero__lead">ベル様は、人の可能性を「枠」で決めない国をつくるために旅をしている。その歩みは、いまも続いている。（仮の文章）</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#map">物語の地図をひらく</a>
+          <a class="btn btn--ghost" href="#">X でベル様をフォロー</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 物語の地図 ===== -->
+    <section id="map" class="map-section">
+      <header class="section-head reveal">
+        <p class="section-head__en" lang="en">The Chronicle Map</p>
+        <h2 class="section-head__ja">物語の地図</h2>
+        <p class="section-head__lead">地図の印をえらぶと、その章へ進めます。</p>
+      </header>
+
+      <div class="map-frame reveal">
+        <svg class="corner corner--tl" viewBox="0 0 80 80" aria-hidden="true"><use href="#flourish"/></svg>
+        <svg class="corner corner--tr" viewBox="0 0 80 80" aria-hidden="true"><use href="#flourish"/></svg>
+        <svg class="corner corner--bl" viewBox="0 0 80 80" aria-hidden="true"><use href="#flourish"/></svg>
+        <svg class="corner corner--br" viewBox="0 0 80 80" aria-hidden="true"><use href="#flourish"/></svg>
+
+        <div class="map-inner">
+          <svg class="chronicle-map" viewBox="0 0 1000 680" role="group" aria-labelledby="map-title">
+            <title id="map-title">ベル様の物語の地図。五つの章の地点があります。</title>
+            <defs>
+              <!-- 羊皮紙の焼けた縁：輪郭をゆがませる -->
+              <filter id="burn" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="7" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+              <!-- 紙の細かな繊維 -->
+              <filter id="grain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="t"/>
+                <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.32  0 0 0 0 0.2  0 0 0 0 0.08  0 0 0 0.55 -0.05" result="c"/>
+                <feComposite in="c" in2="SourceGraphic" operator="in"/>
+              </filter>
+              <!-- 紙のしみ -->
+              <filter id="stains" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="12" result="t"/>
+                <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.28  0 0 0 0 0.1  0 0 0 1.6 -0.72" result="c"/>
+                <feComposite in="c" in2="SourceGraphic" operator="in"/>
+              </filter>
+              <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+              <filter id="fogblur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+              <!-- 海岸線を手描き風にゆらす -->
+              <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="n"/>
+                <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+
+              <radialGradient id="vignette" cx="50%" cy="50%" r="62%">
+                <stop offset="55%" stop-color="#7a4a1a" stop-opacity="0"/>
+                <stop offset="85%" stop-color="#7a4a1a" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#3a1f08" stop-opacity="0.85"/>
+              </radialGradient>
+              <radialGradient id="fog" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f3e6c2" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#f3e6c2" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#8f6b23"/>
+                <stop offset="35%" stop-color="#f3dc9a"/>
+                <stop offset="60%" stop-color="#c9973a"/>
+                <stop offset="100%" stop-color="#8f6b23"/>
+              </linearGradient>
+
+              <!-- 島の形 -->
+              <path id="isle-main" d="M260 170 C300 128 380 118 420 150 C460 176 500 148 545 168 C592 192 604 250 572 290 C550 320 592 352 582 402 C572 452 522 470 482 500 C440 530 380 522 350 482 C320 446 268 462 238 420 C208 380 230 340 210 300 C190 254 220 206 260 170 Z"/>
+              <path id="isle-herald" d="M108 468 C128 438 182 442 197 474 C212 506 186 542 150 547 C112 552 92 504 108 468 Z"/>
+              <path id="isle-pact" d="M640 360 C682 328 742 340 762 380 C782 420 762 472 720 482 C678 492 638 470 628 430 C620 400 624 374 640 360 Z"/>
+              <path id="isle-kiyosu" d="M598 132 C628 98 702 104 722 140 C742 176 712 218 670 222 C628 226 586 190 598 132 Z"/>
+              <path id="isle-unknown" d="M818 518 C850 496 912 502 932 540 C948 576 920 612 880 616 C838 620 802 588 818 518 Z"/>
+
+              <!-- 地図記号 -->
+              <symbol id="mountain" viewBox="-20 -16 40 20" overflow="visible">
+                <path d="M-18 4 L-2 -14 L6 -4 L10 -8 L20 4" fill="none" stroke="#3a2412" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M-2 -14 L-6 -2 M-2 -14 L1 -6 M-9 -6 L-12 2 M10 -8 L9 0" stroke="#3a2412" stroke-width="1" opacity=".7"/>
+              </symbol>
+              <symbol id="tree" viewBox="-8 -12 16 16" overflow="visible">
+                <circle cx="0" cy="-6" r="5.5" fill="#d2b77a" stroke="#3a2412" stroke-width="1.2"/>
+                <path d="M0 0 V3" stroke="#3a2412" stroke-width="1.4"/>
+              </symbol>
+              <symbol id="ship" viewBox="-24 -30 48 40" overflow="visible">
+                <path d="M-20 0 Q0 10 20 0 L16 6 Q0 12 -16 6 Z" fill="#d2b77a" stroke="#3a2412" stroke-width="1.4"/>
+                <path d="M0 0 V-26" stroke="#3a2412" stroke-width="1.6"/>
+                <path d="M1 -24 Q14 -16 1 -6 Z" fill="#efe0b8" stroke="#3a2412" stroke-width="1.2"/>
+                <path d="M-1 -22 Q-12 -14 -1 -6 Z" fill="#efe0b8" stroke="#3a2412" stroke-width="1.2"/>
+                <path d="M0 -26 L8 -29 L0 -31" fill="#8f2a1c"/>
+              </symbol>
+              <!-- 額縁の飾り（角） -->
+              <symbol id="flourish" viewBox="0 0 80 80">
+                <g fill="none" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M6 6 H74 M6 6 V74"/>
+                  <path d="M14 14 C40 14 54 22 52 35 C50 45 37 47 33 39 C30 32 37 27 42 31"/>
+                  <path d="M14 14 C14 40 22 54 35 52 C45 50 47 37 39 33 C32 30 27 37 31 42"/>
+                  <path d="M56 6 C60 13 66 13 70 6 M6 56 C13 60 13 66 6 70"/>
+                </g>
+                <circle cx="14" cy="14" r="4.5" fill="url(#goldGrad)"/>
+              </symbol>
+
+              <!-- 海岸の波線（等間隔の線）を作るマスク -->
+              <mask id="coastRings" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="680">
+                <g fill="none">
+                  <g stroke="#fff" stroke-width="44"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                  <g stroke="#000" stroke-width="41"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                  <g stroke="#fff" stroke-width="29"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                  <g stroke="#000" stroke-width="26.5"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                  <g stroke="#fff" stroke-width="16"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                  <g stroke="#000" stroke-width="14"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+                </g>
+                <g fill="#000"><use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/></g>
+              </mask>
+              <clipPath id="paperClip"><rect x="44" y="44" width="912" height="592"/></clipPath>
+            </defs>
+
+            <!-- 羊皮紙 -->
+            <g filter="url(#burn)">
+              <rect x="22" y="22" width="956" height="636" fill="#ead7a4"/>
+              <rect x="22" y="22" width="956" height="636" fill="#000" filter="url(#stains)"/>
+              <rect x="22" y="22" width="956" height="636" fill="#000" filter="url(#grain)"/>
+              <rect x="22" y="22" width="956" height="636" fill="url(#vignette)"/>
+              <rect x="22" y="22" width="956" height="636" fill="none" stroke="#2e1606" stroke-width="12" opacity=".75" filter="url(#soft)"/>
+            </g>
+
+            <!-- 方位線（コンパスから放射） -->
+            <g clip-path="url(#paperClip)" stroke="#3a2412" stroke-width=".8" opacity=".18">
+              <path d="M850 150 L-150 150 M850 150 L1850 150 M850 150 L850 -850 M850 150 L850 1150 M850 150 L-150 1150 M850 150 L1850 -850 M850 150 L-150 -850 M850 150 L1850 1150 M850 150 L-150 564 M850 150 L-150 -264 M850 150 L436 1150 M850 150 L1264 1150"/>
+            </g>
+
+            <!-- 海岸の波線と陸地（手描き風にゆらす） -->
+            <g filter="url(#rough)">
+              <rect x="0" y="0" width="1000" height="680" fill="#3a2412" opacity=".42" mask="url(#coastRings)"/>
+              <g fill="#dcc185" fill-opacity=".55" stroke="#3a2412" stroke-width="2.4" stroke-linejoin="round">
+                <use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/>
+              </g>
+              <g fill="none" stroke="#3a2412" stroke-width="7" opacity=".08">
+                <use href="#isle-main"/><use href="#isle-herald"/><use href="#isle-pact"/><use href="#isle-kiyosu"/>
+              </g>
+            </g>
+
+            <!-- まだ見ぬ大地（霧の中） -->
+            <g class="unknown-land">
+              <use href="#isle-unknown" fill="none" stroke="#3a2412" stroke-width="2" stroke-dasharray="6 7" opacity=".55"/>
+              <ellipse class="fog fog--a" cx="878" cy="560" rx="110" ry="70" fill="url(#fog)" filter="url(#fogblur)"/>
+              <ellipse class="fog fog--b" cx="850" cy="585" rx="90" ry="55" fill="url(#fog)" filter="url(#fogblur)"/>
+            </g>
+
+            <!-- 山・森 -->
+            <g>
+              <use href="#mountain" x="285" y="215" width="40" height="20"/>
+              <use href="#mountain" x="325" y="198" width="40" height="20"/>
+              <use href="#mountain" x="458" y="200" width="40" height="20"/>
+              <use href="#mountain" x="495" y="236" width="40" height="20"/>
+              <use href="#mountain" x="262" y="370" width="40" height="20"/>
+              <use href="#mountain" x="300" y="392" width="40" height="20"/>
+              <use href="#mountain" x="520" y="370" width="40" height="20"/>
+              <use href="#tree" x="440" y="420" width="16" height="16"/>
+              <use href="#tree" x="456" y="430" width="16" height="16"/>
+              <use href="#tree" x="470" y="416" width="16" height="16"/>
+              <use href="#tree" x="250" y="300" width="16" height="16"/>
+              <use href="#tree" x="264" y="290" width="16" height="16"/>
+              <use href="#tree" x="690" y="180" width="16" height="16"/>
+              <use href="#tree" x="704" y="168" width="16" height="16"/>
+            </g>
+
+            <!-- 航路 -->
+            <g class="route" fill="none" stroke="#7a2e1a" stroke-width="2.4" stroke-dasharray="2 9" stroke-linecap="round">
+              <path d="M400 300 C330 380 230 420 160 480"/>
+              <path d="M165 500 C300 610 560 570 690 420"/>
+              <path d="M705 395 C762 318 720 250 670 182"/>
+              <path d="M690 172 C790 232 885 380 872 528" opacity=".5"/>
+            </g>
+
+            <!-- 船 -->
+            <use class="ship ship--a" href="#ship" x="380" y="560" width="48" height="40"/>
+            <use class="ship ship--b" href="#ship" x="745" y="270" width="48" height="40"/>
+
+            <!-- 海の名前 -->
+            <text x="160" y="250" class="map-sea" transform="rotate(-8 160 250)">静かなる海</text>
+            <text x="560" y="625" class="map-sea">夜明けの入江</text>
+
+            <!-- 地図の題名（カルトゥーシュ） -->
+            <g class="cartouche" transform="translate(66 64)">
+              <rect width="300" height="96" rx="4" fill="#efdfb3" fill-opacity=".9" stroke="#3a2412" stroke-width="2"/>
+              <rect x="6" y="6" width="288" height="84" rx="2" fill="none" stroke="#3a2412" stroke-width="1"/>
+              <path d="M-10 48 C-22 30 -2 18 6 30 M310 48 C322 30 302 18 294 30" fill="none" stroke="#3a2412" stroke-width="2"/>
+              <text x="150" y="44" text-anchor="middle" class="map-title-ja">ベル様の物語</text>
+              <text x="150" y="72" text-anchor="middle" class="map-title-en">THE CHRONICLE OF BELL</text>
+            </g>
+
+            <!-- コンパス -->
+            <g class="compass" transform="translate(850 150)">
+              <g class="compass__rose">
+                <circle r="78" fill="#efdfb3" fill-opacity=".55" stroke="#3a2412" stroke-width="1.6"/>
+                <circle r="70" fill="none" stroke="#3a2412" stroke-width="7" stroke-dasharray="1 5.1" opacity=".75"/>
+                <circle r="62" fill="none" stroke="#3a2412" stroke-width="1"/>
+                <g stroke="#3a2412" stroke-width="1" stroke-linejoin="round">
+                  <g transform="rotate(45)"><path d="M0 0 L0 -50 L-9 -9 Z" fill="#c9973a"/><path d="M0 0 L0 -50 L9 -9 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(135)"><path d="M0 0 L0 -50 L-9 -9 Z" fill="#c9973a"/><path d="M0 0 L0 -50 L9 -9 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(225)"><path d="M0 0 L0 -50 L-9 -9 Z" fill="#c9973a"/><path d="M0 0 L0 -50 L9 -9 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(315)"><path d="M0 0 L0 -50 L-9 -9 Z" fill="#c9973a"/><path d="M0 0 L0 -50 L9 -9 Z" fill="#3a2412"/></g>
+                  <g><path d="M0 0 L0 -76 L-13 -13 Z" fill="#e8c873"/><path d="M0 0 L0 -76 L13 -13 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(90)"><path d="M0 0 L0 -76 L-13 -13 Z" fill="#e8c873"/><path d="M0 0 L0 -76 L13 -13 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(180)"><path d="M0 0 L0 -76 L-13 -13 Z" fill="#e8c873"/><path d="M0 0 L0 -76 L13 -13 Z" fill="#3a2412"/></g>
+                  <g transform="rotate(270)"><path d="M0 0 L0 -76 L-13 -13 Z" fill="#e8c873"/><path d="M0 0 L0 -76 L13 -13 Z" fill="#3a2412"/></g>
+                </g>
+                <circle r="6" fill="#efdfb3" stroke="#3a2412" stroke-width="1.6"/>
+              </g>
+              <text y="-86" text-anchor="middle" class="compass__n">N</text>
+            </g>
+
+            <!-- 章の地点（クリックで各章へ） -->
+            <a class="pin" href="#ch-0" aria-label="序章 枠の国">
+              <g transform="translate(400 300)">
+                <g class="pin__body">
+                  <rect x="-22" y="-22" width="44" height="44" fill="none" stroke="#3a2412" stroke-width="2.5" stroke-dasharray="6 3"/>
+                  <circle r="17" class="pin__seal"/>
+                  <text y="6" text-anchor="middle" class="pin__num">序</text>
+                </g>
+                <text y="50" text-anchor="middle" class="pin__label">枠の国</text>
+              </g>
+            </a>
+            <a class="pin" href="#ch-1" aria-label="第一章 伝令の塔">
+              <g transform="translate(150 495)">
+                <g class="pin__body">
+                  <circle r="17" class="pin__seal"/>
+                  <text y="6" text-anchor="middle" class="pin__num">壱</text>
+                </g>
+                <text y="44" text-anchor="middle" class="pin__label">伝令の塔</text>
+              </g>
+            </a>
+            <a class="pin" href="#ch-2" aria-label="第二章 盟約の港">
+              <g transform="translate(700 410)">
+                <g class="pin__body">
+                  <circle r="17" class="pin__seal"/>
+                  <text y="6" text-anchor="middle" class="pin__num">弐</text>
+                </g>
+                <text y="44" text-anchor="middle" class="pin__label">盟約の港</text>
+              </g>
+            </a>
+            <a class="pin" href="#ch-3" aria-label="第三章 清須の地">
+              <g transform="translate(662 165)">
+                <g class="pin__body">
+                  <circle r="17" class="pin__seal"/>
+                  <text y="6" text-anchor="middle" class="pin__num">参</text>
+                </g>
+                <text y="44" text-anchor="middle" class="pin__label">清須の地</text>
+              </g>
+            </a>
+            <a class="pin pin--locked" href="#ch-4" aria-label="未来の章 まだ見ぬ大地（まだ開かれていません）">
+              <g transform="translate(875 555)">
+                <g class="pin__body">
+                  <circle r="17" class="pin__seal"/>
+                  <text y="6" text-anchor="middle" class="pin__num">？</text>
+                </g>
+                <text y="44" text-anchor="middle" class="pin__label">まだ見ぬ大地</text>
+              </g>
+            </a>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 章の一覧（地図と同じ内容を文章でも） ===== -->
+    <section id="chapters" class="chapters">
+      <header class="section-head reveal">
+        <p class="section-head__en" lang="en">Chapters</p>
+        <h2 class="section-head__ja">物語の章</h2>
+      </header>
+      <ol class="chapter-list">
+        <li id="ch-0" class="chapter reveal">
+          <span class="chapter__seal" aria-hidden="true">序</span>
+          <h3 class="chapter__title"><small>序章</small>枠の国</h3>
+          <p>人の可能性が、生まれた「枠」で決められてしまう国。ベル様は、その当たり前に疑問をいだいた。（仮）</p>
+        </li>
+        <li id="ch-1" class="chapter reveal">
+          <span class="chapter__seal" aria-hidden="true">壱</span>
+          <h3 class="chapter__title"><small>第一章</small>伝令の塔</h3>
+          <p>ベル様は声を上げはじめる。言葉は伝令となり、国じゅうへ届いていく。（仮）</p>
+        </li>
+        <li id="ch-2" class="chapter reveal">
+          <span class="chapter__seal" aria-hidden="true">弐</span>
+          <h3 class="chapter__title"><small>第二章</small>盟約の港</h3>
+          <p>志を同じくする諸侯（企業）と手を結び、仲間が集まりはじめる。（仮）</p>
+        </li>
+        <li id="ch-3" class="chapter reveal">
+          <span class="chapter__seal" aria-hidden="true">参</span>
+          <h3 class="chapter__title"><small>第三章</small>清須の地</h3>
+          <p>清須の地に拠点を築く。それぞれ違う力を持つ仲間たちと、新しい国づくりが始まる。（仮）</p>
+        </li>
+        <li id="ch-4" class="chapter chapter--locked reveal">
+          <span class="chapter__seal" aria-hidden="true">？</span>
+          <h3 class="chapter__title"><small>未来の章</small>まだ見ぬ大地</h3>
+          <p>この先の地図は、まだ描かれていない。（仮）</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== 最新の発信 ===== -->
+    <section id="news" class="news">
+      <header class="section-head reveal">
+        <p class="section-head__en" lang="en">Latest Herald</p>
+        <h2 class="section-head__ja">最新の伝令</h2>
+        <p class="section-head__lead">X での発信</p>
+      </header>
+      <div class="news__placeholder reveal">ここに X の最新投稿を表示する予定です</div>
+    </section>
+
+    <!-- ===== 企業の方へ ===== -->
+    <section id="alliance" class="alliance reveal">
+      <p class="section-head__en" lang="en">Gate of Alliance</p>
+      <h2 class="section-head__ja">盟約の門</h2>
+      <p>企業・団体の方からのご相談はこちら。（受けられる内容は確認中・仮）</p>
+      <a class="btn btn--gold" href="#">ご相談の流れを見る</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© ベル様の物語（試作）</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
